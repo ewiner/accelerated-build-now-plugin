@@ -17,8 +17,8 @@ public class AcceleratedBuildNowComparator implements Comparator<Queue.Buildable
   }
 
   public int compare(Queue.BuildableItem buildableItem0, Queue.BuildableItem buildableItem1) {
-    AbstractProject<?, ?> project0 = (AbstractProject<?, ?>) buildableItem0.task;
-    AbstractProject<?, ?> project1 = (AbstractProject<?, ?>) buildableItem1.task;
+    Queue.Task project0 = buildableItem0.task;
+    Queue.Task project1 = buildableItem1.task;
     if(project0.equals(mostPriorityProject)) {
       return -1;
     }

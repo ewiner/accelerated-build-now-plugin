@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.523</version><!-- which version of Jenkins is this plugin built against? -->
+    <version>3.43</version><!-- which version of Jenkins is this plugin built against? -->
   </parent>
 
   <groupId>org.terracotta.jenkins.plugins</groupId>
@@ -22,6 +22,22 @@
     <dependency>
       <groupId>org.jenkins-ci.main</groupId>
       <artifactId>maven-plugin</artifactId>
+      <version>3.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>matrix-project</artifactId>
+      <version>1.13</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>junit</artifactId>
+      <version>1.20</version>
     </dependency>
   </dependencies>
 
@@ -42,14 +58,14 @@
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </repository>
   </repositories>
 
   <pluginRepositories>
     <pluginRepository>
       <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
+      <url>https://repo.jenkins-ci.org/public/</url>
     </pluginRepository>
   </pluginRepositories>
 
@@ -70,6 +86,10 @@
       <organizationUrl>http://www.terracotta.org</organizationUrl>
     </developer>
   </developers>
+
+  <properties>
+    <java.level>8</java.level>
+  </properties>
 
   <url>https://wiki.jenkins-ci.org/display/JENKINS/Accelerated+Build+Now+Plugin</url>
 </project>

@@ -41,7 +41,7 @@ public class CantAbortHumanBuildTest extends HudsonTestCase {
     assertThat(job1.getName(), equalTo("simpleJobWithParameters"));
     job1.getBuildersList().add(new SleepBuilder(3000));
 
-    httpPostBuildToJenkins("job/simpleJobWithParameters/buildWithParameters", "stringParameterName=Value&.crumb=test");
+    httpPostBuildToJenkins("job/simpleJobWithParameters/buildWithParameters", "stringParameterName=Value&");
 
     FreeStyleProject acceleratedJob = createFreeStyleProject("acceleratedJob");
     acceleratedJob.getBuildersList().add(new SleepBuilder(3000));
@@ -81,9 +81,12 @@ public class CantAbortHumanBuildTest extends HudsonTestCase {
   IOException, ProtocolException {
     String url = Jenkins.getInstance().getRootUrl() + urlSuffix;
     URL obj = new URL(url);
+    String crumb = Jenkins.getInstance().getCrumbIssuer().getCrumb();
+    String crumbField = Jenkins.getInstance().getCrumbIssuer().getCrumbRequestField();
     HttpURLConnection con = (HttpURLConnection) obj.openConnection();
     con.setRequestMethod("POST");
     con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+    con.setRequestProperty(crumbField, crumb);
     con.setDoOutput(true);
     DataOutputStream wr = new DataOutputStream(con.getOutputStream());
     wr.writeBytes(urlParameters);

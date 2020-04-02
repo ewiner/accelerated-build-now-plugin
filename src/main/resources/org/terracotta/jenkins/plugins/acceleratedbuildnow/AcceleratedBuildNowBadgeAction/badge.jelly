@@ -1,3 +1,4 @@
+<?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core">
   <a href="${rootURL}/${it.killedBuildUrl}"><img src="${rootURL}${it.iconPath}" width="16" height="16" alt="${it.text}" title="${it.text}" /></a>
 </j:jelly>
